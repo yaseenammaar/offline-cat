@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Offline",
+    "slug": "Offline",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yaseenammaar.offlinecatexpo"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.cat.offline"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "expo": {
+      "jsEngine": "hermes"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b52b642d-f5a3-4793-a5a5-ead9a55d3af8"
+      }
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
