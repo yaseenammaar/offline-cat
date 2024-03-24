@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, StatusBar } from 'react-native';
 import { createWallet, transferFunds } from '../../controllers/web3/Web3Controller';
-import { readNdef, writeNdef } from '../../controllers/nfc/NfcController';
+import { readNdef, writeNdef, readNfcAndTransferSOL } from '../../controllers/nfc/NfcController';
+import BalanceCard from '../components/BalanceCard';
+
+import { Ionicons, FontAwesome5 } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons';
+import FlipCardButton from '../components/FlipCardButton';
+import { styles } from '../style/style'; 
 
 export default function HomeScreen() {
     const [publicKey, setPublicKey] = useState(null);
@@ -33,40 +39,29 @@ export default function HomeScreen() {
         // }
       };
 
+      const handleNFCTransaction = async () => {
+        readNfcAndTransferSOL("lol")
+      }
+      
+
     return (
+        
         <View style={styles.container}>
-            {publicKey && <Text style={styles.keyText}>Public Key: {publicKey}</Text>}
-            {privateKey && <Text style={styles.keyText}>Private Key: {privateKey}</Text>}
-            <View style={styles.buttonContainer}>
+            
+            
+             <BalanceCard balance={20.0} />
+             {/* <FlipCardButton frontContent="Send" backContent="Receive" />  */}
+            {/* <View style={styles.buttonContainer}>
                 <Button title="Create Wallet" onPress={handleCreateWallet} />
 
                 <Button title="Transfer SOL" onPress={handleTransferFunds} />
-                
+                <Button title="Transfer SOL with NFC" onPress={handleNFCTransaction}/>
+                 */}
                 {/* <Button title="Import Wallet" onPress={handleImportWallet} /> */}
-                {/* <Button title="Scan Tag" onPress={handleReadNdef} />
-                <Button title="Write Tag" onPress={handleWriteNdef} /> */}
-            </View>
+                {/* <Button title="Scan Tag" onPress={readNdef} />
+                <Button title="Write Tag" onPress={writeNdef} />
+            </View> */}
             <StatusBar style="auto" />
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    buttonContainer: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 20,
-    },
-    keyText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
-});

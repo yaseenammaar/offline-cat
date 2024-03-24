@@ -13,7 +13,7 @@ export const createWallet = () => {
 
 export const transferFunds = async (fromSecretKeyArray, toPublicKeyString, amountSol) => {
         const secretKey = bs58.decode(fromSecretKeyArray);
-        const connection = new Connection(clusterApiUrl('testnet'));
+        const connection = new Connection(clusterApiUrl('mainnet-beta'));
         const fromKeypair = Keypair.fromSecretKey(new Uint8Array(secretKey));
         const destination = new PublicKey(toPublicKeyString);
         const transferInstruction = SystemProgram.transfer({

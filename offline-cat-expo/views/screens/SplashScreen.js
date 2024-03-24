@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#4A90E2', // Feel free to change the background color
+        backgroundColor: '#F7F7F0', // Feel free to change the background color
     },
     text: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#FFFFFF',
+        color: '#3C4047',
     },
 });
 
