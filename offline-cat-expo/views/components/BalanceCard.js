@@ -1,30 +1,31 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const BalanceCard = ({ balance }) => {
+const BalanceCard = ({ balance, onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.7}>
       <View style={styles.card}>
-        <Text style={styles.title}>Balance (SOL)</Text>
-        <Text style={styles.balance}>{balance}</Text>
+        <Text style={styles.title}>{balance} SOL</Text>
+        <Text style={styles.balance}>Solana Mainnet</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    top: 100, // Adjust this value to leave space for other components
+    
+    top: 120, // Adjust this value to leave space for other components
     left: 0,
     right: 0,
     paddingHorizontal: 20,
-    zIndex: 999, // Ensure the card is on top
+    zIndex: 999,
+    margin: 10
   },
   card: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
+    backgroundColor: '#6A6E77',
+    padding: 30,
+    borderRadius: 20,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -35,12 +36,14 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   title: {
-    fontSize: 18,
+    fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#F7F7F0',
   },
   balance: {
-    fontSize: 24,
+    fontSize: 18,
+    color: '#F7F7F0',
   },
 });
 
