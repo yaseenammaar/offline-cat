@@ -5,13 +5,9 @@ import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 const TopButtons = ({ onLeftPress, onRightPress }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={[styles.button, styles.leftButton]}
-        onPress={onLeftPress}
-        activeOpacity={0.7}
-      >
-        <Text style={styles.buttonText}>♦</Text>
-      </TouchableOpacity>
+      
+        <Text style={styles.textTitle}>Offline</Text>
+      
       <TouchableOpacity
         style={[styles.button, styles.rightButton]}
         onPress={onLeftPress}
@@ -45,11 +41,18 @@ const styles = StyleSheet.create({
   },
   leftButton: {
     // Additional styling for the left button if needed
+    
   },
   rightButton: {
     // Additional styling for the right button if needed
     backgroundColor: '#D49092'
   },
+  textTitle: {
+    color: '#000',
+    fontSize: 28, // Adjust size as needed
+    fontWeight: 'bold',
+  }
+  ,
   buttonText: {
     color: '#FFFFFF', // Text color
     fontSize: 18, // Adjust size as needed

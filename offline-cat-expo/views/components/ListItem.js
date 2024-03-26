@@ -16,7 +16,7 @@ const ListItem = ({ imageUrl, title, description }) => {
 
 const styles = StyleSheet.create({
   container: {
-    top: 70,
+    top: 0,
     flexDirection: 'row',
     padding: 10,
     alignItems: 'center',

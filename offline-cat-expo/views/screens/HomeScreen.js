@@ -64,8 +64,51 @@ export default function HomeScreen() {
              
 
              <ButtonsGrid/>
+             <Text style={{marginTop: 80, marginLeft: 35, fontSize: 20, fontWeight: 'bold', color: '#D49092'}}>Recent Activities</Text>
              
-             <ScrollView style={{margin: 30}} >
+             <ScrollView style={{margin: 30, marginTop: 20, marginBottom: 350}} >
+                <ListItem
+                    imageUrl="https://www.liblogo.com/img-logo/so2809sc45-solana-logo-solana-blockchain-platform-liblogo.png"
+                    title="23.2 SOL Sent"
+                    description="Card Tap: lkmx...lsdo"
+                />
+                 <ListItem
+                    imageUrl="https://www.liblogo.com/img-logo/so2809sc45-solana-logo-solana-blockchain-platform-liblogo.png"
+                    title="12.1 SOL Received"
+                    description="Card Tap: 0xzx...laq0"
+                />
+                 <ListItem
+                    imageUrl="https://www.liblogo.com/img-logo/so2809sc45-solana-logo-solana-blockchain-platform-liblogo.png"
+                    title="32.10 SOL Received"
+                    description="Card Tap: FKme...2xMa"
+                />
+                 
+                 <ListItem
+                    imageUrl="https://www.liblogo.com/img-logo/so2809sc45-solana-logo-solana-blockchain-platform-liblogo.png"
+                    title="0.1 SOL Received"
+                    description="Card Tap: ...lsdo"
+                />
+                <ListItem
+                    imageUrl="https://www.liblogo.com/img-logo/so2809sc45-solana-logo-solana-blockchain-platform-liblogo.png"
+                    title="23.2 SOL Sent"
+                    description="Card Tap: lkmx...lsdo"
+                />
+                 <ListItem
+                    imageUrl="https://www.liblogo.com/img-logo/so2809sc45-solana-logo-solana-blockchain-platform-liblogo.png"
+                    title="12.1 SOL Received"
+                    description="Card Tap: 0xzx...laq0"
+                />
+                 <ListItem
+                    imageUrl="https://www.liblogo.com/img-logo/so2809sc45-solana-logo-solana-blockchain-platform-liblogo.png"
+                    title="32.10 SOL Received"
+                    description="Card Tap: FKme...2xMa"
+                />
+                 
+                 <ListItem
+                    imageUrl="https://www.liblogo.com/img-logo/so2809sc45-solana-logo-solana-blockchain-platform-liblogo.png"
+                    title="0.1 SOL Received"
+                    description="Card Tap: ...lsdo"
+                />
                 <ListItem
                     imageUrl="https://www.liblogo.com/img-logo/so2809sc45-solana-logo-solana-blockchain-platform-liblogo.png"
                     title="23.2 SOL Sent"
