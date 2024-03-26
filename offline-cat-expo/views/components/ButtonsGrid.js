@@ -1,6 +1,14 @@
 // ButtonsGrid.js
-import React from 'react';
+import React,  { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { createWallet, transferFunds } from '../../controllers/web3/Web3Controller';
+import { readNdef, writeNdef, readNfcAndTransferSOL } from '../../controllers/nfc/NfcController';
+import AmountModal from './AmountModal';
+
+const solTransgerNFC = async () => {
+  console.log("NFC Button tapped")
+  await readNfcAndTransferSOL("lol");
+};
 
 const Button = ({ title, onPress }) => (
   <TouchableOpacity style={styles.button} onPress={onPress} activeOpacity={0.7}>
@@ -9,12 +17,29 @@ const Button = ({ title, onPress }) => (
 );
 
 const ButtonsGrid = () => {
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => setModalVisible(true);
+  const closeModal = () => setModalVisible(false);
+
+  const handleSubmitAmount = (amount) => {
+    solTransgerNFC()
+    console.log('Amount entered:', amount);
+    // Handle the amount here (e.g., state update, API call, etc.)
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Button title="Send" onPress={() => console.log('Button 1 pressed')} />
-        <Button title="Receive" onPress={() => console.log('Button 2 pressed')} />
+        <Button title="Send" onPress={openModal} />
+        <Button title="Receive" onPress={solTransgerNFC} />
       </View>
+      <AmountModal
+        isVisible={modalVisible}
+        onClose={closeModal}
+        onSubmit={handleSubmitAmount}
+      />
      
     </View>
   );

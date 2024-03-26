@@ -61,7 +61,7 @@ export default function HomeScreen() {
             
             <TopButtons onLeftPress={handleLeftPress} onRightPress={handleRightPress} />
              <BalanceCard balance={20.91} onPress={() => console.log('Card pressed!')} />
-             <FlipCardButton frontContent="Send" backContent="Receive" /> 
+             
 
              <ButtonsGrid/>
              
