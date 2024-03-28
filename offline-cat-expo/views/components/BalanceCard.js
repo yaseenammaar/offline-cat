@@ -15,7 +15,7 @@ const BalanceCard = ({ balance, onPress }) => {
 const styles = StyleSheet.create({
   container: {
     
-    top: 120, // Adjust this value to leave space for other components
+    top: 70, // Adjust this value to leave space for other components
     left: 0,
     right: 0,
     paddingHorizontal: 20,

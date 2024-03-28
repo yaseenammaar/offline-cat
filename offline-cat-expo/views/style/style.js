@@ -8,6 +8,9 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    safeArea: {
+        flex: 1,
+      },
     
     
 });

@@ -47,7 +47,7 @@ const ButtonsGrid = () => {
 
 const styles = StyleSheet.create({
   container: {
-    top: 110,
+    top: 70,
     padding: 20, // Add padding around the grid
     margin: 10
   },

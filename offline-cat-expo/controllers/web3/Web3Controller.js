@@ -11,6 +11,22 @@ export const createWallet = () => {
     };
 };
 
+export const fetchBalance = async (publicKeyString) => {
+  const connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
+  const publicKey = new PublicKey(publicKeyString);
+
+  try {
+      const balanceInLamports = await connection.getBalance(publicKey);
+      const balanceInSOL = balanceInLamports / LAMPORTS_PER_SOL;
+      console.log(`Balance for ${publicKeyString}: ${balanceInSOL} SOL`);
+      return balanceInSOL;
+  } catch (error) {
+      console.error('Failed to fetch balance:', error);
+      throw error;
+  }
+};
+
+
 export const transferFunds = async (fromSecretKeyArray, toPublicKeyString, amountSol) => {
         const secretKey = bs58.decode(fromSecretKeyArray);
         const connection = new Connection(clusterApiUrl('mainnet-beta'));
