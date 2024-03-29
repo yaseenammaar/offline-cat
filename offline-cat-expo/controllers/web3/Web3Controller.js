@@ -3,12 +3,27 @@ import bs58 from 'bs58';
 
 
 export const createWallet = () => {
-    const keypair = Keypair.generate();
-    console.log("New Wallet", keypair);
-    return {
-        publicKey: keypair.publicKey.toString(),
-        privateKey: [...keypair.secretKey] // Convert secret key to array for demonstration purposes
-    };
+  console.log("Create Wallet Called");
+  // const keypair = Keypair.generate();
+  // console.log("New Wallet", keypair);
+  
+};
+
+export const getPublicKeyFromPrivateKey = (privateKey) => {
+  try {
+    // const decodedPrivateKey = Buffer.from("2BpMEhkSV6vuHh7LeKJ9cukVkT8dyyWV78U4PwA7PSyQRWweZJfZPsbXzVMLTKFX1Qfm1r6g4w3aS5Kqak4w2368", 'base64');
+
+   const base58PrivateKey = privateKey;
+    // const base58PrivateKey = '[91,148,254,87,251,247,102,167,13,179,193,166,23,237,8,179,138,80,127,101,159,95,188,153,178,240,77,84,86,128,237,174,183,83,55,49,120,228,179,187,105,59,121,25,230,208,150,206,90,90,160,28,122,201,198,104,78,128,185,156,81,61,64,58]';
+    const decodedPrivateKey = bs58.decode(base58PrivateKey);
+    const keypair = Keypair.fromSecretKey(decodedPrivateKey);
+    const publicKey = keypair.publicKey.toString();
+    console.log("Success", publicKey)
+    return publicKey;
+  } catch (error) {
+    console.error('Error getting public key from private key:', error);
+    return null;
+  }
 };
 
 export const fetchBalance = async (publicKeyString) => {

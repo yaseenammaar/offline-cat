@@ -6,7 +6,7 @@ const SplashScreen = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Offline</Text>
-            {/* You can replace Text with your Image */}
+            
         </View>
     );
 };

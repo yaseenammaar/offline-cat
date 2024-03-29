@@ -1,21 +1,28 @@
 // TopButtons.js
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const TopButtons = ({ onLeftPress, onRightPress }) => {
+  const clearWalletCreated = async () => {
+    try {
+      await AsyncStorage.removeItem('walletCreated');
+      console.log('walletCreated cleared');
+    } catch (error) {
+      console.error('Error clearing walletCreated:', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      
-        <Text style={styles.textTitle}>Offline</Text>
-      
+      <Text style={styles.textTitle}>Offline</Text>
       <TouchableOpacity
         style={[styles.button, styles.rightButton]}
-        onPress={onLeftPress}
+        onPress={onRightPress || clearWalletCreated} // Call clearWalletCreated when onRightPress is not provided
         activeOpacity={0.7}
       >
         <Text style={styles.buttonText}>♦</Text>
       </TouchableOpacity>
-      
     </View>
   );
 };
@@ -48,11 +55,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#D49092'
   },
   textTitle: {
-    color: '#000',
+    color: '#111',
     fontSize: 28, // Adjust size as needed
+    marginTop: 15,
     fontWeight: 'bold',
-  }
-  ,
+  },
   buttonText: {
     color: '#FFFFFF', // Text color
     fontSize: 18, // Adjust size as needed
