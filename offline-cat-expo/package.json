@@ -31,7 +31,11 @@
     "react-native-url-polyfill": "^2.0.0",
     "react-native-vector-icons": "^10.0.3",
     "react-native-webview": "13.6.4",
-    "stream": "^0.0.2"
+    "stream": "^0.0.2",
+    "expo-linking": "~6.2.2",
+    "expo-constants": "~15.4.5",
+    "react-native-web": "~0.19.6",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

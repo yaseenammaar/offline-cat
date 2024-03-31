@@ -13,12 +13,22 @@ const TopButtons = ({ onLeftPress, onRightPress }) => {
     }
   };
 
+  const clearWallet = async () => {
+    console.log("Called Clear")
+    try {
+      await AsyncStorage.removeItem('walletCreated');
+      console.log('walletCreated cleared');
+    } catch (error) {
+      console.error('Error clearing walletCreated:', error);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Offline</Text>
       <TouchableOpacity
         style={[styles.button, styles.rightButton]}
-        onPress={onRightPress || clearWalletCreated} // Call clearWalletCreated when onRightPress is not provided
+        onPress={clearWallet} // Call clearWalletCreated when onRightPress is not provided
         activeOpacity={0.7}
       >
         <Text style={styles.buttonText}>♦</Text>
@@ -36,7 +46,8 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     paddingHorizontal: 20,
-    margin: 10
+    margin: 10,
+    zIndex:1999999
   },
   button: {
     width: 40,
