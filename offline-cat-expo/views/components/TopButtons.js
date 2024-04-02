@@ -3,7 +3,7 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const TopButtons = ({ onLeftPress, onRightPress }) => {
+const TopButtons = ({ onLeftPress, onRightPress,navigation }) => {
   const clearWalletCreated = async () => {
     try {
       await AsyncStorage.removeItem('walletCreated');
@@ -27,8 +27,9 @@ const TopButtons = ({ onLeftPress, onRightPress }) => {
     <View style={styles.container}>
       <Text style={styles.textTitle}>Offline</Text>
       <TouchableOpacity
+        onPress={() => navigation.navigate("Profile")}
         style={[styles.button, styles.rightButton]}
-        onPress={clearWallet} // Call clearWalletCreated when onRightPress is not provided
+        // onPress={clearWallet} // Call clearWalletCreated when onRightPress is not provided
         activeOpacity={0.7}
       >
         <Text style={styles.buttonText}>♦</Text>

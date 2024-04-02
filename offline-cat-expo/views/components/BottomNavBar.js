@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { View, StyleSheet, TouchableOpacity, Animated, PanResponder, Vibration, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { readNfcAndTransferSOL } from '../../controllers/nfc/NfcController';
 
 const BottomNav = () => {
   const dragValue = useRef(new Animated.Value(0)).current;
@@ -15,7 +16,7 @@ const BottomNav = () => {
   };
 
   const onThresholdRight = () => {
-    console.log('Reached right threshold');
+    readNfcAndTransferSOL("Lol");
     // Add any action you want to perform when reaching the right threshold
     Vibration.vibrate(100); // Example action: Vibrate for 100 milliseconds
   };

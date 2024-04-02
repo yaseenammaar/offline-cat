@@ -3,49 +3,42 @@ import { Text } from 'react-native'; // Import Text component from react-native
 import SplashScreen from './views/screens/SplashScreen';
 import HomeScreen from './views/screens/HomeScreen';
 import WalletSetupScreen from './views/screens/WalletSetupScreen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import 'react-native-get-random-values';
-import 'react-native-url-polyfill/auto';
-import { Buffer } from 'buffer';
-global.Buffer = Buffer;
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+// import 'react-native-get-random-values';
+// import 'react-native-url-polyfill/auto';
+// import { Buffer } from 'buffer';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// // import { Crypto } from 'expo-crypto';
+
+// global.Buffer = Buffer;
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-    const [isSplashActive, setIsSplashActive] = useState(true);
-    const [isWalletCreated, setIsWalletCreated] = useState(false);
 
-    useEffect(() => {
-        // Check if wallet is created
-        AsyncStorage.getItem('walletCreated')
-            .then(value => {
-                // Convert value to boolean
-                const walletCreated = value === 'true';
-                setIsWalletCreated(walletCreated);
-            })
-            .catch(error => {
-                console.error('Error retrieving walletCreated:', error);
-                // Handle error here, e.g., set isWalletCreated to false
-                setIsWalletCreated(false);
-            })
-            .finally(() => {
-                // Hide splash screen after 5 seconds
-                setTimeout(() => {
-                    setIsSplashActive(false);
-                }, 5000); // The splash screen will be visible for 5 seconds
-            });
+    return (
+        <NavigationContainer
+        >
+        {/* isWalletCreated ? <HomeScreen /> : <WalletSetupScreen /> */}
+        <Stack.Navigator 
+        screenOptions={{
+            headerShown: false 
+        }} 
 
-        // Read public key and private key here if needed
-        AsyncStorage.multiGet(['publicKey', 'privateKey'])
-            .then(values => {
-                const publicKey = values[0][1]; // Get public key from values array
-                const privateKey = values[1][1]; // Get private key from values array
-                // Do something with publicKey and privateKey
-            })
-            .catch(error => {
-                console.error('Error retrieving keys:', error);
-            });
-    }, []); // Ensure useEffect only runs once on component mount
+        initialRouteName='Splash'>
+        <Stack.Screen
+          name="Splash"
+          component={SplashScreen}
+        />
 
-    return isSplashActive ? <SplashScreen /> : (
-        isWalletCreated ? <HomeScreen /> : <WalletSetupScreen />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+        />
+
+        <Stack.Screen name="Profile" component={WalletSetupScreen} />
+      </Stack.Navigator>
+        </NavigationContainer>
     );
 }

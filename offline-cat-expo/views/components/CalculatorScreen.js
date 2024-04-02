@@ -67,14 +67,13 @@ const CalculatorScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 30,
     margin: 30
   },
   displayContainer: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#f0f0fa',
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: 10,

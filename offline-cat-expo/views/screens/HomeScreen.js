@@ -6,7 +6,7 @@ import { readNdef, writeNdef, readNfcAndTransferSOL } from '../../controllers/nf
 import BalanceCard from '../components/BalanceCard';
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons'; // Ensure these are installed
 import { MaterialIcons } from '@expo/vector-icons';
-import FlipCardButton from '../components/FlipCardButton';
+
 import ListItem from '../components/ListItem';
 import ButtonsGrid from '../components/ButtonsGrid';
 import TopButtons from '../components/TopButtons';
@@ -17,13 +17,13 @@ import { styles } from '../style/style';
 // Assuming `styles` are imported from '../style/style';
 // If not, you need to define them in this file.
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
     const [publicKey, setPublicKey] = useState(null);
     const [privateKey, setPrivateKey] = useState(null);
     const [balance, setBalance] = useState(0);
 
     useEffect(() => {
-        // Fetch public key from AsyncStorage
+    const fetchAndUpdateBalance = () => {
         AsyncStorage.getItem('publicKey')
             .then(publicKey => {
                 if (publicKey) {
@@ -43,7 +43,16 @@ export default function HomeScreen() {
                 }
             })
             .catch(error => console.error('Error fetching public key from AsyncStorage:', error));
-    }, []);
+    };
+
+    // Fetch balance immediately and then every 10 seconds
+    fetchAndUpdateBalance();
+    const interval = setInterval(fetchAndUpdateBalance, 10000);
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(interval);
+}, []);
+
 
     const handleCreateWallet = () => {
         const { publicKey, privateKey } = createWallet();
@@ -70,7 +79,7 @@ export default function HomeScreen() {
     return (
         <SafeAreaView style={styles.safeArea}>
             <StatusBar style="auto" />
-            <TopButtons onLeftPress={handleLeftPress} onRightPress={handleRightPress} />
+            <TopButtons onLeftPress={handleLeftPress} onRightPress={handleRightPress} navigation={navigation}/>
             <ScrollView style={styles.scrollView}>
                 <BalanceCard balance={balance} onPress={() => console.log('Card pressed!')} />
                 <ButtonsGrid />
