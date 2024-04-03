@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Animated, PanResponder, Vibration, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { readNfcAndTransferSOL } from '../../controllers/nfc/NfcController';
@@ -6,23 +6,12 @@ import { readNfcAndTransferSOL } from '../../controllers/nfc/NfcController';
 const BottomNav = () => {
   const dragValue = useRef(new Animated.Value(0)).current;
   const { width } = Dimensions.get('window');
-  const maxDragDistance = 0.2 * width; // Adjusted to 30% as requested
+  const maxDragDistance = 0.2 * width;
+  const [disabled, setDisabled] = useState(false);
+  const [panResponder, setPanResponder] = useState(null);
 
-  const onThresholdLeft = () => {
-
-    console.log('Reached left threshold');
-    // Add any action you want to perform when reaching the left threshold
-    Vibration.vibrate(100); // Example action: Vibrate for 100 milliseconds
-  };
-
-  const onThresholdRight = () => {
-    readNfcAndTransferSOL("Lol");
-    // Add any action you want to perform when reaching the right threshold
-    Vibration.vibrate(100); // Example action: Vibrate for 100 milliseconds
-  };
-
-  const panResponder = useRef(
-    PanResponder.create({
+  useEffect(() => {
+    const panResponderInstance = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (_, gestureState) => {
         let dx = gestureState.dx;
@@ -43,29 +32,47 @@ const BottomNav = () => {
           useNativeDriver: true,
         }).start();
       },
-    })
-  ).current;
+    });
+    setPanResponder(panResponderInstance);
+  }, []);
+
+  const onThresholdLeft = () => {
+    
+    console.log('Reached left threshold');
+    readNfcAndTransferSOL("Receive");
+    Vibration.vibrate(100);
+  };
+
+  const onThresholdRight = () => {
+    
+      console.log('Reached right threshold');
+      readNfcAndTransferSOL("Send");
+      Vibration.vibrate(100);
+      
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.nav}>
-        <TouchableOpacity onPress={() => console.log('Home Pressed')}>
+        <TouchableOpacity onPress={onThresholdLeft}>
           <Feather name="arrow-down-left" size={24} color="gray" />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => console.log('Search Pressed')} />
-        <TouchableOpacity onPress={() => console.log('Account Pressed')}>
+        <TouchableOpacity onPress={onThresholdRight}>
           <Feather name="arrow-up-right" size={24} color="gray" />
         </TouchableOpacity>
       </View>
-      <Animated.View
-        {...panResponder.panHandlers}
-        style={[
-          styles.circle,
-          {
-            transform: [{ translateX: dragValue }],
-          },
-        ]}
-      />
+      {/* {panResponder && (
+        <Animated.View
+          {...panResponder.panHandlers}
+          style={[
+            styles.circle,
+            {
+              transform: [{ translateX: dragValue }],
+            },
+          ]}
+        />
+      )} */}
     </View>
   );
 };

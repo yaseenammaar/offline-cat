@@ -2,14 +2,16 @@ import NfcManager, {NfcTech, Ndef} from 'react-native-nfc-manager';
 import {transferFunds} from '../web3/Web3Controller';
 
 // Initialization of NFC Manager
-NfcManager.start();
 
-export const writeNdef = async () => {
+export const writeNdef = async (text) => {
     let result = false;
     try {
-        await NfcManager.requestTechnology(NfcTech.Ndef);
-        const bytes = Ndef.encodeMessage([Ndef.textRecord('2BpMEhkSV6vuHh7LeKJ9cukVkT8dyyWV78U4PwA7PSyQRWweZJfZPsbXzVMLTKFX1Qfm1r6g4w3aS5Kqak4w2368')]);
+        await NfcManager.requestTechnology(NfcTech.Ndef, {
+            alertMessage: "Tap to activate the card",
+          });
+        const bytes = Ndef.encodeMessage([Ndef.textRecord(text)]);
         if (bytes) {
+            console.log("Activated")
             await NfcManager.ndefHandler.writeNdefMessage(bytes);
             result = true;
         }
@@ -37,23 +39,33 @@ export const readNdef = async () => {
     }
 };
 
+export const readAndImport = async () =>{
+    const nfcData = readNdef();
+    //async data store
 
-export const readNfcAndTransferSOL = async (fromSecretKey) => {
+}
+
+export const readNfcAndTransferSOL = async (type, fromSecretKey,publickey, amount) => {
+    const nfcData = readNdef();
+
     console.log("Started NFC")
+    NfcManager.start();
     try {
-        
-        await NfcManager.requestTechnology(NfcTech.Ndef);
+        await NfcManager.requestTechnology(NfcTech.Ndef, {
+            alertMessage: type,
+          });
         const tag = await NfcManager.getTag();
         const payload = tag.ndefMessage[0].payload;
         const decoded = Ndef.text.decodePayload(payload);
-
         console.log("data from nfc card", decoded)
-
         // Assuming the NFC tag's text record is "recipientPublicKey,amountSOL"
         const toPublicKeyStr = "FeYMF2VNYUwwttAnnLkLezzYatpt9hqX7yjfALJix3Gi";
         const amountSOL = parseFloat(0.01);
 
         if (toPublicKeyStr && !isNaN(amountSOL)) {
+            if (Platform.OS === 'ios') {
+                await NfcManager.setAlertMessageIOS('Done');
+            }
             transferFunds(decoded, toPublicKeyStr, amountSOL);
             console.log(`Transferred ${amountSOL} SOL to ${toPublicKeyStr}`);
         } else {
@@ -65,3 +77,36 @@ export const readNfcAndTransferSOL = async (fromSecretKey) => {
         NfcManager.cancelTechnologyRequest();
     }
 };
+
+
+// export const readNfcAndTransferSOL = async (type, fromSecretKey) => {
+//     console.log("Started NFC")
+//     NfcManager.start();
+//     try {
+//         await NfcManager.requestTechnology(NfcTech.Ndef, {
+//             alertMessage: type,
+//           });
+//         const tag = await NfcManager.getTag();
+//         const payload = tag.ndefMessage[0].payload;
+//         const decoded = Ndef.text.decodePayload(payload);
+//         console.log("data from nfc card", decoded)
+//         // Assuming the NFC tag's text record is "recipientPublicKey,amountSOL"
+//         const toPublicKeyStr = "FeYMF2VNYUwwttAnnLkLezzYatpt9hqX7yjfALJix3Gi";
+//         const amountSOL = parseFloat(0.01);
+
+//         if (toPublicKeyStr && !isNaN(amountSOL)) {
+//             if (Platform.OS === 'ios') {
+//                 await NfcManager.setAlertMessageIOS('Done');
+//             }
+//             transferFunds(decoded, toPublicKeyStr, amountSOL);
+//             console.log(`Transferred ${amountSOL} SOL to ${toPublicKeyStr}`);
+//         } else {
+//             console.warn("Invalid data on NFC tag.");
+//         }
+//     } catch (ex) {
+//         console.warn('Failed to read NFC and transfer SOL:', ex);
+//     } finally {
+//         NfcManager.cancelTechnologyRequest();
+//     }
+// };
+

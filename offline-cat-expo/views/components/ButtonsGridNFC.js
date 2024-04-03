@@ -1,6 +1,15 @@
 // ButtonsGrid.js
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { readNfcAndTransferSOL, writeNdef } from '../../controllers/nfc/NfcController';
+
+
+
+const activateCard = async () => {
+  const pvtKey = "2BpMEhkSV6vuHh7LeKJ9cukVkT8dyyWV78U4PwA7PSyQRWweZJfZPsbXzVMLTKFX1Qfm1r6g4w3aS5Kqak4w2368";
+  console.log("NFC Button tapped")
+  await writeNdef(pvtKey)
+};
 
 const Button = ({ title, onPress }) => (
   <TouchableOpacity style={styles.button} onPress={onPress} activeOpacity={0.7}>
@@ -8,12 +17,11 @@ const Button = ({ title, onPress }) => (
   </TouchableOpacity>
 );
 
-const ButtonsGrid = ({ onSendPress, onReceivePress }) => {
+const ButtonsGridNFC = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.row}>
-        <Button title="Send" onPress={onSendPress} />
-        <Button title="Receive" onPress={onReceivePress} />
+      <View style={[styles.row, { justifyContent: 'center' }]}>
+        <Button title="Activate Card" onPress={activateCard} />
       </View>
     </View>
   );
@@ -21,20 +29,20 @@ const ButtonsGrid = ({ onSendPress, onReceivePress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    top: 70,
+    top: 0,
     padding: 20, // Add padding around the grid
     margin: 10
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-between', // This spaces out the buttons in each row
+    justifyContent: 'center', // Center the button horizontally
     marginBottom: 20, // Add some space between the rows
   },
   button: {
-    backgroundColor: '#64AB7C', // Button background color
+    backgroundColor: '#80BCCF', // Button background color
     padding: 20, // Button padding
     borderRadius: 20, // Round the corners of the buttons
-    width: '48%', // Approximately half the container width minus some space for margin
+    width: '50%', // Set button width to 50% of the container
     alignItems: 'center', // Center text horizontally
     justifyContent: 'center', // Center text vertically
   },
@@ -45,4 +53,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ButtonsGrid;
+export default ButtonsGridNFC;
