@@ -1,4 +1,11 @@
 import { registerRootComponent } from 'expo';
+// import 'react-native-get-random-values';
+// import { v4 } from 'uuid';
+// import { polyfillWebCrypto } from 'expo-standard-web-crypto';
+// polyfillWebCrypto();
+// const uuid = v4();
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 
 import App from './App';
 

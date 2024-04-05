@@ -3,15 +3,13 @@ import { Text } from 'react-native'; // Import Text component from react-native
 import SplashScreen from './views/screens/SplashScreen';
 import HomeScreen from './views/screens/HomeScreen';
 import WalletSetupScreen from './views/screens/WalletSetupScreen';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import 'react-native-get-random-values';
 // import 'react-native-url-polyfill/auto';
-// import { Buffer } from 'buffer';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-// // import { Crypto } from 'expo-crypto';
 
-// global.Buffer = Buffer;
 
 const Stack = createNativeStackNavigator();
 

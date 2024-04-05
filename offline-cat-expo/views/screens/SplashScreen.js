@@ -16,7 +16,7 @@ const SplashScreen = ({ navigation }) => {
   if (!timePassed) {
     return (
       <View style={styles.container}>
-        <Typewriter typing={0.5} style={styles.text}>
+        <Typewriter typing={1} style={styles.text}>
           Offline
         </Typewriter>
       </View>

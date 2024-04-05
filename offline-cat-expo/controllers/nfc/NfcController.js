@@ -45,7 +45,8 @@ export const readAndImport = async () =>{
 
 }
 
-export const readNfcAndTransferSOL = async (type, fromSecretKey,publickey, amount) => {
+// export const readNfcAndTransferSOL = async (type, fromSecretKey,publickey, amount) => {
+export const readNfcAndTransferSOL = async (type) => {
     const nfcData = readNdef();
 
     console.log("Started NFC")

@@ -5,7 +5,7 @@ import nacl from 'tweetnacl';
 export const createWallet = () => {
   console.log("New Wallet", Keypair);
   let keypair_ = Keypair.generate();
-  console.log("New Wallet", keypair_);
+  console.log("New Wallet Next", keypair_);
   
 };
 
@@ -26,9 +26,13 @@ export const getPublicKeyFromPrivateKey = (privateKey) => {
   }
 };
 
-export const fetchBalance = async (publicKeyString) => {
+
+// export const fetchBalance = async (publicKeyString) => {
+  export const fetchBalance = async (publicKeyString) => {
+  
   const connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
-  const publicKey = new PublicKey(publicKeyString);
+  // const publicKey = new PublicKey(publicKeyString);
+  const publicKey = new PublicKey("7DoT7uf9uGzxAALcT8ErWqWVQv1koFtLr9JntDxP5bSc");
 
   try {
       const balanceInLamports = await connection.getBalance(publicKey);

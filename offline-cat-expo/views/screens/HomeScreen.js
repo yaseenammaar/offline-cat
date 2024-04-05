@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, StatusBar, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createWallet, fetchBalance } from '../../controllers/web3/Web3Controller';
-import { readNfcAndTransferSOL } from '../../controllers/nfc/NfcController';
+import { readNfcAndTransferSOL, writeNdef } from '../../controllers/nfc/NfcController';
 import BalanceCard from '../components/BalanceCard';
 import ButtonsGrid from '../components/ButtonsGrid';
 import ButtonsGridNFC from '../components/ButtonsGridNFC';
@@ -10,12 +10,14 @@ import TopButtons from '../components/TopButtons';
 import CalculatorScreen from '../components/CalculatorScreen';
 import { styles } from '../style/style'; 
 
+
 export default function HomeScreen({ navigation }) {
     const [publicKey, setPublicKey] = useState(null);
     const [balance, setBalance] = useState(0);
     const [calculatorDisplayValue, setCalculatorDisplayValue] = useState('0.00');
-
+    fetchBalance("LOL")
     useEffect(() => {
+        console.log(AsyncStorage);
         const fetchAndUpdateBalance = () => {
             AsyncStorage.getItem('publicKey')
                 .then(publicKey => {
@@ -57,9 +59,10 @@ export default function HomeScreen({ navigation }) {
         setCalculatorDisplayValue(value);
     };
 
-    const handleSendPress = () => {
+    const handleSendPress = async () => {
         // Handle "Send" button press logic here
         console.log('Send button pressed', calculatorDisplayValue);
+        await writeNdef("Send")
         
     };
 
