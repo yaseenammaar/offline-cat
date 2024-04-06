@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, StatusBar, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createWallet, fetchBalance } from '../../controllers/web3/Web3Controller';
-import { readNfcAndTransferSOL, writeNdef } from '../../controllers/nfc/NfcController';
+import { readNfcAndTransferSOL, receiveFundsViaNFC, transferFundsViaNFC, writeNdef } from '../../controllers/nfc/NfcController';
 import BalanceCard from '../components/BalanceCard';
 import ButtonsGrid from '../components/ButtonsGrid';
 import ButtonsGridNFC from '../components/ButtonsGridNFC';
@@ -41,19 +41,12 @@ export default function HomeScreen({ navigation }) {
 
         // Fetch balance immediately and then every 10 seconds
         fetchAndUpdateBalance();
-        const interval = setInterval(fetchAndUpdateBalance, 10000);
+        const interval = setInterval(fetchAndUpdateBalance, 4000);
 
         // Clear the interval when the component unmounts
         return () => clearInterval(interval);
     }, []);
 
-    const handleLeftPress = () => {
-        console.log('Left button pressed');
-    };
-
-    const handleRightPress = () => {
-        console.log('Right button pressed');
-    };
     const handleCalculatorDisplayChange = (value) => {
         console.log(value)
         setCalculatorDisplayValue(value);
@@ -62,19 +55,20 @@ export default function HomeScreen({ navigation }) {
     const handleSendPress = async () => {
         // Handle "Send" button press logic here
         console.log('Send button pressed', calculatorDisplayValue);
-        await writeNdef("Send")
+        await transferFundsViaNFC(calculatorDisplayValue, "Sending " + calculatorDisplayValue + " SOL");
         
     };
 
-    const handleReceivePress = () => {
+    const handleReceivePress = async () => {
         // Handle "Receive" button press logic here
         console.log('Receive button pressed', calculatorDisplayValue);
+        await receiveFundsViaNFC(calculatorDisplayValue, "Receiving "+ calculatorDisplayValue +" SOL");
     };
 
     return (
         <SafeAreaView style={styles.safeArea}>
             <StatusBar style="auto" />
-            <TopButtons onLeftPress={handleLeftPress} onRightPress={handleRightPress} navigation={navigation} />
+            <TopButtons navigation={navigation} />
             <BalanceCard balance={balance} onPress={() => console.log('Card pressed!')} />
             <ButtonsGrid onSendPress={handleSendPress} onReceivePress={handleReceivePress} />
             <CalculatorScreen displayValue={calculatorDisplayValue} onDisplayChange={handleCalculatorDisplayChange} />

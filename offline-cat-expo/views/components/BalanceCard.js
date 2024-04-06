@@ -6,7 +6,7 @@ const BalanceCard = ({ balance, onPress }) => {
     <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.7}>
       <View style={styles.card}>
         <Text style={styles.title}>{balance} SOL</Text>
-        <Text style={styles.balance}>Solana Mainnet</Text>
+        <Text style={styles.balance}>Solana Devnet</Text>
       </View>
     </TouchableOpacity>
   );

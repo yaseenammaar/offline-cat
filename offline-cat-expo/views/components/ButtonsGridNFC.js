@@ -1,14 +1,15 @@
 // ButtonsGrid.js
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { readNfcAndTransferSOL, writeNdef } from '../../controllers/nfc/NfcController';
-
+import { writeNdef } from '../../controllers/nfc/NfcController';
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 
 
 const activateCard = async () => {
-  const pvtKey = "2BpMEhkSV6vuHh7LeKJ9cukVkT8dyyWV78U4PwA7PSyQRWweZJfZPsbXzVMLTKFX1Qfm1r6g4w3aS5Kqak4w2368";
-  console.log("NFC Button tapped")
-  await writeNdef(pvtKey)
+  const pvtKey = await AsyncStorage.getItem('privateKey');
+  console.log("Private Key", pvtKey);
+  console.log("Activate Button tapped")
+  await writeNdef(pvtKey, "Tap to Activate Card")
 };
 
 const Button = ({ title, onPress }) => (

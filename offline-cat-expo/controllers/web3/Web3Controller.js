@@ -2,11 +2,15 @@ import { clusterApiUrl, Connection, PublicKey, SystemProgram, Transaction, Keypa
 import bs58 from 'bs58';
 import nacl from 'tweetnacl';
 
+// const connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
+const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+
 export const createWallet = () => {
-  console.log("New Wallet", Keypair);
+  console.log("New Wallet");
   let keypair_ = Keypair.generate();
-  console.log("New Wallet Next", keypair_);
-  
+  console.log("public key", keypair_.publicKey);
+  console.log("secret key", keypair_.secretKey);
+ 
 };
 
 export const getPublicKeyFromPrivateKey = (privateKey) => {
@@ -30,9 +34,9 @@ export const getPublicKeyFromPrivateKey = (privateKey) => {
 // export const fetchBalance = async (publicKeyString) => {
   export const fetchBalance = async (publicKeyString) => {
   
-  const connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
+  
   // const publicKey = new PublicKey(publicKeyString);
-  const publicKey = new PublicKey("7DoT7uf9uGzxAALcT8ErWqWVQv1koFtLr9JntDxP5bSc");
+  const publicKey = new PublicKey(publicKeyString);
 
   try {
       const balanceInLamports = await connection.getBalance(publicKey);
@@ -48,7 +52,7 @@ export const getPublicKeyFromPrivateKey = (privateKey) => {
 
 export const transferFunds = async (fromSecretKeyArray, toPublicKeyString, amountSol) => {
         const secretKey = bs58.decode(fromSecretKeyArray);
-        const connection = new Connection(clusterApiUrl('mainnet-beta'));
+        
         const fromKeypair = Keypair.fromSecretKey(new Uint8Array(secretKey));
         const destination = new PublicKey(toPublicKeyString);
         const transferInstruction = SystemProgram.transfer({

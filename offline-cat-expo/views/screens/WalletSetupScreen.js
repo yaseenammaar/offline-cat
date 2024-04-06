@@ -9,11 +9,6 @@ const WalletSetupScreen = ({ navigation }) => {
   const [privateKey, setPrivateKey] = useState('');
   const [publicKey, setPublicKey] = useState('');
 
-  //2qCYWiZz74eNaB8bYkaimaHd1Sb5ZTxrjxm5WcUCE4vZbpWmL85HDLkib5sVLfPEnN2sCNaWFnLnWKEzprsYYdFw
-  //2qCYWiZz74eNaB8bYkaimaHd1Sb5ZTxrjxm5WcUCE4vZbpWmL85HDLkib5sVLfPEnN2sCNaWFnLnWKEzprsYYdFw
-
-  //91,148,254,87,251,247,102,167,13,179,193,166,23,237,8,179,138,80,127,101,159,95,188,153,178,240,77,84,86,128,237,174,183,83,55,49,120,228,179,187,105,59,121,25,230,208,150,206,90,90,160,28,122,201,198,104,78,128,185,156,81,61,64,58
-
   const handleCreateWallet = async () => {
     // Call the createWallet function
     const walletCreated = await createWallet();
@@ -56,7 +51,7 @@ const WalletSetupScreen = ({ navigation }) => {
         ]);
   
         // Navigate to Home screen
-        // navigation.navigate('Home');
+        navigation.navigate('Home');
       } else {
         Alert.alert('Error', 'Failed to derive public key from private key');
       }
