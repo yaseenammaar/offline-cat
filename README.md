@@ -17,6 +17,16 @@ Offline is a tool that allows you to use crypto without internet, providing a gr
 
 <img src="https://github.com/yaseenammaar/offline-cat/assets/47599553/e5b39b9d-0fdc-4a83-bc54-ce3a764dc138" width="300" height="600">
 
+## Zero Carbon 🌱
+
+In today's fast-paced digital world, being eco-conscious isn't just a trend, it's a necessity. Offline takes a playful jab at carbon footprints and offers a zero carbon solution for your crypto needs. 
+
+🌍 **Global Impact**: By eliminating the need for constant internet connection, we're reducing carbon emissions equivalent to planting thousands of trees. Talk about making Mother Earth smile!
+
+🌞 **Sun-Powered Transactions**: With Offline, your transactions are as clean as solar energy. No more relying on fossil fuels for your crypto endeavors. 
+
+♻️ **Eco-Friendly Wallets**: Say goodbye to carbon-heavy hardware wallets. Offline offers disposable wallets that are as green as they come. It's like recycling, but for your crypto!
+
 ## Installation
 
 To install and run the Offline React app, follow these steps:
