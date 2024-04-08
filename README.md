@@ -27,6 +27,47 @@ In today's fast-paced digital world, being eco-conscious isn't just a trend, it'
 
 ♻️ **Eco-Friendly Wallets**: Say goodbye to carbon-heavy hardware wallets. Offline offers disposable wallets that are as green as they come. It's like recycling, but for your crypto!
 
+## Eco-Friendly Features 🌿
+
+### Advantages of Offline Green Wallets:
+
+1. **Simpler Production**: Manufactured with fewer materials and less energy, making them environmentally friendlier.
+
+2. **No Electricity Needed for Operation**: Powered by the NFC reader during transactions, which means they do not consume electricity on their own.
+
+3. **Minimal Operational Energy**: Their operational carbon footprint is negligible due to the absence of a continuous power requirement.
+
+4. **Easier Disposal**: The straightforward design allows for potentially easier recycling, though electronics still need careful disposal.
+
+5. **No Technical Hassle**: They are straightforward to use without the need for technical setup or maintenance.
+
+6. **Easy to Activate**: Can be activated with a simple tap to an NFC-enabled device in less than 5 seconds, offering a hassle-free user experience. Fully anonymous and decentralized.
+
+### Hardware Wallet Disadvantages:
+
+1. **More Complex Production**: The assembly of diverse electronic components makes their production more resource-intensive.
+
+2. **Higher Operational Energy**: Require external power sources, leading to higher energy consumption during their operational life.
+
+3. **Complex Disposal**: Disposal is more challenging due to the mix of materials and electronics, which complicates recycling efforts.
+
+4. **Technical Setup Required**: Users may need to go through a setup process, including installing software or configuring the wallet.
+
+5. **Activation and Operation**: Involves more steps to activate and use, potentially presenting a barrier for non-technical users.
+
+### Per Transaction Cost:
+
+- Bitcoin costs 18 trees 🌳
+- Ethereum costs 4-5 trees 🌴 (Pre-Merge)
+- Ethereum: 1-2 leaf 🍀 (Post-Merge)
+- Solana: <1 leaf ☘️
+
+**Toward a Greener World, One SOL at a Time** 🎋
+
+### Green Option:
+
+Consider the <1 USD production cost disposable, one-time-use green wallets (Similar to gift card) as a sustainable alternative.
+
 ## Installation
 
 To install and run the Offline React app, follow these steps:
