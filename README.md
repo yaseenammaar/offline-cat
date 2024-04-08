@@ -78,13 +78,13 @@ Offline SDK is currently under development to extend the capabilities of Offline
 To integrate Offline Web3 SDK into your app, follow these steps:
 
 1. **Install the SDK**:
-   ```npm install @offline/web3-sdk```
+   ```npm install @offline-web3-sdk```
 
 2. **Import the SDK** into your React Native app:
-   ```import OfflineWeb3 from '@offline/web3-sdk';```
+   ```import OfflineWeb3 from '@offline-web3-sdk';```
 
 3. **Initialize the SDK** with your preferred blockchain network:
-   ```const offlineWeb3 = new OfflineWeb3('solana', 'mainnet-beta'); // Example: Ethereum on Ropsten testnet```
+   ```const offlineWeb3 = new OfflineWeb3('solana', 'mainnet-beta'); // Example: Solana Mainnet, Devnet, Testnet```
 
 4. **Use SDK Methods** to perform transactions:
    ```
