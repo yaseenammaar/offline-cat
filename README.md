@@ -17,6 +17,53 @@ Offline is a tool that allows you to use crypto without internet, providing a gr
 
 <img src="https://github.com/yaseenammaar/offline-cat/assets/47599553/e5b39b9d-0fdc-4a83-bc54-ce3a764dc138" width="300" height="600">
 
+## Installation
+
+To install and run the Offline React app, follow these steps:
+
+1. Clone the repository:
+
+```git clone https://github.com/yaseenammaar/offline-cat.git```
+
+2. Navigate to the project directory:
+
+```cd offline-cat```
+
+3. Install dependencies:
+
+```npm install```
+
+4. Navigate to the iOS directory:
+
+```cd ios```
+
+5. Install CocoaPods dependencies:
+
+```pod install```
+
+## Usage
+
+To run the Offline React app on an iOS device, follow these steps:
+
+1. Ensure you have Xcode installed on your system.
+
+2. Open the project directory in Terminal and run:
+
+```react-native run-ios --list-devices```
+
+This will list the available iOS devices connected to your system. Note down the device identifier you want to use.
+
+3. Run the app on the desired device:
+
+```react-native run-ios --device <device_identifier>```
+
+Replace `<device_identifier>` with the identifier of the desired device obtained from the previous step.
+
+4. The app should now launch on the selected iOS device.
+
+You can copy this code and replace the existing content in your README.md file. Let me know if you need any further assistance!
+
+
 ## Zero Carbon 🌱
 
 In today's fast-paced digital world, being eco-conscious isn't just a trend, it's a necessity. Offline takes a playful jab at carbon footprints and offers a zero carbon solution for your crypto needs. 
@@ -67,49 +114,3 @@ In today's fast-paced digital world, being eco-conscious isn't just a trend, it'
 ### Green Option:
 
 Consider the <1 USD production cost disposable, one-time-use green wallets (Similar to gift card) as a sustainable alternative.
-
-## Installation
-
-To install and run the Offline React app, follow these steps:
-
-1. Clone the repository:
-
-```git clone https://github.com/yaseenammaar/offline-cat.git```
-
-2. Navigate to the project directory:
-
-```cd offline-cat```
-
-3. Install dependencies:
-
-```npm install```
-
-4. Navigate to the iOS directory:
-
-```cd ios```
-
-5. Install CocoaPods dependencies:
-
-```pod install```
-
-## Usage
-
-To run the Offline React app on an iOS device, follow these steps:
-
-1. Ensure you have Xcode installed on your system.
-
-2. Open the project directory in Terminal and run:
-
-```react-native run-ios --list-devices```
-
-This will list the available iOS devices connected to your system. Note down the device identifier you want to use.
-
-3. Run the app on the desired device:
-
-```react-native run-ios --device <device_identifier>```
-
-Replace `<device_identifier>` with the identifier of the desired device obtained from the previous step.
-
-4. The app should now launch on the selected iOS device.
-
-You can copy this code and replace the existing content in your README.md file. Let me know if you need any further assistance!
