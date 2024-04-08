@@ -11,9 +11,9 @@ Offline is a tool that allows you to use crypto without internet, providing a gr
 
 ## Screenshots
 
-![Screenshot 1](https://github.com/yaseenammaar/offline-cat/assets/47599553/232d0f4c-e33e-4ea8-8202-53bce1f4bce0)
+<img src="https://github.com/yaseenammaar/offline-cat/assets/47599553/232d0f4c-e33e-4ea8-8202-53bce1f4bce0" width="300" height="600">
 
-![Screenshot 2](https://github.com/yaseenammaar/offline-cat/assets/47599553/e5b39b9d-0fdc-4a83-bc54-ce3a764dc138)
+<img src="https://github.com/yaseenammaar/offline-cat/assets/47599553/e5b39b9d-0fdc-4a83-bc54-ce3a764dc138" width="300" height="600">
 
 ## Installation
 
