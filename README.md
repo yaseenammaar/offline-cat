@@ -111,6 +111,3 @@ In today's fast-paced digital world, being eco-conscious isn't just a trend, it'
 
 **Toward a Greener World, One SOL at a Time** 🎋
 
-### Green Option:
-
-Consider the <1 USD production cost disposable, one-time-use green wallets (Similar to gift card) as a sustainable alternative.
