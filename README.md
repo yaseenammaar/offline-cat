@@ -62,11 +62,16 @@ Replace `<device_identifier>` with the identifier of the desired device obtained
 4. The app should now launch on the selected iOS device.
 
 
+
+
+
 ## Offline SDK (Work in Progress) 🚧
 
 ### Introduction:
 
 Offline SDK is currently under development to extend the capabilities of Offline, enabling seamless integration with decentralized applications (dApps) for offline web3 transactions. With the Offline SDK, developers can empower their applications with the ability to interact with blockchain networks even without an internet connection. Stay tuned for updates as we work to bring this feature to life!
+
+
 
 ### Getting Started with Offline Web3 SDK:
 
@@ -82,10 +87,11 @@ To integrate Offline Web3 SDK into your app, follow these steps:
    ```const offlineWeb3 = new OfflineWeb3('solana', 'mainnet-beta'); // Example: Ethereum on Ropsten testnet```
 
 4. **Use SDK Methods** to perform transactions:
-   ```const transaction = {
-     from: '0x123...',
-     to: '0xabc...',
-     value: '1000000000000000', // 0.001 ETH
+   ```
+   const transaction = {
+     from: 'H8s7...',
+     to: 'gLUM...',
+     value: '1000000000000', // 0.001 SOL
    };
 
    offlineWeb3.sendTransaction(transaction)
@@ -94,13 +100,16 @@ To integrate Offline Web3 SDK into your app, follow these steps:
      })
      .catch((error) => {
        console.error('Transaction failed:', error);
-     });```
+     });
+   ```
 
 ### Note:
 
 The Offline SDK is currently in development and not yet completed. The provided code is for demonstration purposes only and may not reflect the final implementation. We appreciate your patience and understanding as we work on delivering this feature.
 
 You can copy this code and replace the existing content in your README.md file. Let me know if you need any further assistance!
+
+
 
 
 ## Zero Carbon 🌱
