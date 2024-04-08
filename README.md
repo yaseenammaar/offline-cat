@@ -5,6 +5,9 @@
 [![GitHub stars](https://img.shields.io/github/stars/yaseenammaar/offline-cat)](https://github.com/yaseenammaar/offline-cat/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/yaseenammaar/offline-cat)](https://github.com/yaseenammaar/offline-cat/network)
 
+[![Website](https://img.shields.io/badge/Website-offline.cat-blue?style=for-the-badge)](https://offline.cat/)
+[![Twitter](https://img.shields.io/twitter/follow/OfflineWeb3?style=social)](https://twitter.com/OfflineWeb3)
+
 ## Description
 
 Offline is a tool that allows you to use crypto without internet, providing a green solution. The idea is to store private keys in an NFC chip and create an interface for interaction, similar to what we do with credit and debit cards. Just tap your Offline card to make payments and sign transactions, making it as easy as using Apple Pay and addable to Apple Wallet. Scale your applications with Offline SDK, enabling simple integration to make dApp support offline web3 transactions. Enjoy the benefits of disposable and eco-friendly wallets.
