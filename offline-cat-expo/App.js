@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sniff Labs LLC. All rights reserved.
 import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native'; // Import Text component from react-native
 import SplashScreen from './views/screens/SplashScreen';
